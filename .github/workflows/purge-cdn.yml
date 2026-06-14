@@ -1,0 +1,13 @@
+name: Purge jsDelivr Cache
+on:
+  push:
+    branches: [ main ]
+    
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Purge jsDelivr cache
+      run: |
+        curl "https://purge.jsdelivr.net/gh/${{ github.repository }}/*"
+        curl "https://purge.jsdelivr.net/gh/${{ github.repository }}@latest"
